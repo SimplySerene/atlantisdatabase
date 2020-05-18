@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+
+
 def homepage_view(request, *args, **kwargs):
 
     return render(request, "home.html", {})
 
-def database_view (request,*args, **kwargs):
-  
 
-    return render(request, "database.html")
-    
-def Information_view (request, *args, **kwargs):
+def database_view(request, *args, **kwargs):
+
+    return render(request, "database.html", {})
+
+
+def information_view(request, *args, **kwargs):
     return render(request, "information.html", {})

@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
 
-    <meta charset="UTF-8">
-    <title>Elective Search</title>
-</head>!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <title>Elective Search</title>
-</head>
-<body>
+{% block content %}
     {% if all_electives %}
     <table style="width:50%">
         <tr>
@@ -28,23 +17,5 @@
     {%  else %}
         <p> No electives are available. </p>
     {% endif %}
-</body>
-<body>
-    {% if all_electives %}
-    <table style="width:50%">
-        <tr>
-            <th> Title </th>
-            <th> ECs </th>
-        </tr>
-        {% for elective in all_electives %}
-        <tr>
-            <td> {{ elective.title }} </td>
-            <td> {{ elective.numberOfECs }} </td>
-        </tr>
-        {% endfor %}
-    </table>
-    {%  else %}
-        <p> No electives are available. </p>
-    {% endif %}
-</body>
+{% endblock %}
 </html>
