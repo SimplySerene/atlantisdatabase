@@ -8,17 +8,12 @@
         font-family: Arial, Helvetica, sans-serif;
         margin-left: 10%;
         border: black;
-       
-     
     }
 
     .logo_position{
         position: absolute;
         left: 0;
         top: 0;
-      
-        
-        
 
     }
 </style>
@@ -27,16 +22,13 @@
 <body>
    
     <A class = "logo_position" href = "/"><img src="https://congressus-sa-atlantis.s3-eu-west-1.amazonaws.com/template/359/logo-sa-atlantis.png" width= "500">  </A>
-     <b>{% include 'navbar.html' %}</b>
+         <b>{% include 'navbar.html' %}</b>
    <div class="standardfont">
-        
-            
-    
-    {% block content %}
-     
-    {% endblock %}
-    {% include 'contact.html' %}
-</div> 
+
+        {% block content %} {% endblock %}
+
+        {% include 'contact.html' %}
+    </div>
   
 
     

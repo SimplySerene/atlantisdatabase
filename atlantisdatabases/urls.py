@@ -18,7 +18,7 @@ from pages.views import homepage_view, database_view, information_view
 from django.urls import path, include
 
 urlpatterns = [
-    path('electives/', include('elective_search.urls')),
+    path('electives/', include(('elective_search.urls', 'elective_search'), namespace='electives')),
     path('admin/', admin.site.urls),
     path('', homepage_view, name='home'),
     path('database', database_view),

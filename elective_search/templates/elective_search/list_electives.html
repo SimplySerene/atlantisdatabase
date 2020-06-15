@@ -1,0 +1,18 @@
+{% if electives %}
+    <table style="width:50%">
+        <tr>
+            <th> Title </th>
+            <th> ECs </th>
+            <th> Detail </th>
+        </tr>
+        {% for elective in electives %}
+        <tr>
+            <td> {{ elective.title }} </td>
+            <td> {{ elective.numberOfECs }} </td>
+            <td> <a href="{% url 'electives:detail' elective.id %}"> Details </a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {%  else %}
+        <p> No electives are available. </p>
+    {% endif %}
