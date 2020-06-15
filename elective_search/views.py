@@ -33,6 +33,6 @@ class SearchResultsView(ListView):
 
 
 # Detail view of an elective
-class DetailView(DetailView):
+class ElectiveDetailView(DetailView):
     model = models.Elective
     template_name = 'elective_search/detail.html'

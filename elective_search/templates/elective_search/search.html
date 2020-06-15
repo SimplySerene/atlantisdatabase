@@ -2,17 +2,18 @@
 
 {% block content %}
 
-
 {#  Search function  #}
 
-    <form id="searchForm" action="{% url 'electives:results' %}" metdod="get" accept-charset="utf-8">
+<div>
+    <form id="searchForm" action="{% url 'electives:results' %}" method="get" accept-charset="utf-8">
         <table>
-            <tr><td>Title:</td><td><input name="title" type="search" ></td></tr>
-            <tr><td>Osiris code:</td><td><input name="osiriscode" type="search"></td></tr>
-            <tr><td>Number of EC's:</td><td><input name="ec" type="search"></td></tr>
-            <tr><td>Keywords:</td><td><input name="keywords" type="search" ></td></tr>
+            <tr><td>Title:</td>             <td><input name="title" type="search" ></td></tr>
+            <tr><td>Osiris code:</td>       <td><input name="osiriscode" type="search"></td></tr>
+            <tr><td>Number of EC's:</td>    <td><input name="ec" type="search"></td></tr>
+            <tr><td>Keywords:</td>          <td><input name="keywords" type="search" ></td></tr>
+
             <tr><td>UT Block:</td>
-                <td> <select name="utblock">
+                <td> <select style="width: 100%" name="utblock">
                 <option value="">-- UT Block --</option>
                      {% for block in utblocks %}
                          <option value="{{ block.0 }}">{{ block.1 }}</option>
@@ -21,7 +22,7 @@
             </tr>
 
             <tr><td>Language:</td>
-                <td> <select name="language">
+                <td> <select style="width: 100%" name="language">
                     <option value="">-- language --</option>
                      {% for block in languages %}
                          <option value="{{ block.0 }}">{{ block.1 }}</option>
@@ -30,7 +31,7 @@
             </tr>
 
             <tr><td>Elective type:</td>
-                <td> <select name="electivetype">
+                <td> <select style="width: 100%" name="electivetype">
                     <option value="">-- Type --</option>
                     {% for block in elective_types %}
                          <option value="{{ block.0 }}">{{ block.1 }}</option>
@@ -38,10 +39,18 @@
                 </select> </td>
             </tr>
         </table>
-        <button class="searchButton" type="submit">
+        <button style=" background-color: #1f81c3;
+                         color: white;
+                         padding: 14px 20px;
+                         margin: 8px 0;
+                         border: none;
+                         border-radius: 4px;
+                         cursor: pointer;"
+                class="searchButton" type="submit">
             <i>Search</i>
         </button>
     </form>
+</div>
 
 {#  Display all electives  #}
 
