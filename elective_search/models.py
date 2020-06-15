@@ -23,7 +23,10 @@ def search(title='', ec='', utblock='', language='', electivetype='', osiriscode
         electives = electives.filter(electiveType__exact=electivetype)
     if osiriscode != '':
         electives = electives.filter(osirisCode__iexact=osiriscode)
-    # keywords not yet implemented
+    if keywords != '':
+        for word in keywords.split():
+            electives = electives.filter(courseDescription__icontains=word)
+
     return electives
 
 

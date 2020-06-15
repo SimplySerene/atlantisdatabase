@@ -8,18 +8,40 @@
     <form id="searchForm" action="{% url 'electives:results' %}" metdod="get" accept-charset="utf-8">
         <table>
             <tr><td>Title:</td><td><input name="title" type="search" ></td></tr>
-            <tr><td>OsirisCode:</td><td><input name="osiriscode" type="search"></td></tr>
+            <tr><td>Osiris code:</td><td><input name="osiriscode" type="search"></td></tr>
             <tr><td>Number of EC's:</td><td><input name="ec" type="search"></td></tr>
-            <tr><td>UT Block:</td><td><input name="utblock" type="search" ></td></tr> {# todo change to a dropdown menu. #}
-            <tr><td>Language:</td><td><input name="language" type="search" ></td></tr> {# todo change to a dropdown menu EN/NL #}
-            <tr><td>Elective type:</td><td><input name="electivetype" type="search" ></td></tr> {#  todo cahgne to drop down menu #}
             <tr><td>Keywords:</td><td><input name="keywords" type="search" ></td></tr>
+            <tr><td>UT Block:</td>
+                <td> <select name="utblock">
+                <option value="">-- UT Block --</option>
+                     {% for block in utblocks %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
+
+            <tr><td>Language:</td>
+                <td> <select name="language">
+                    <option value="">-- language --</option>
+                     {% for block in languages %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
+
+            <tr><td>Elective type:</td>
+                <td> <select name="electivetype">
+                    <option value="">-- Type --</option>
+                    {% for block in elective_types %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
         </table>
         <button class="searchButton" type="submit">
             <i>Search</i>
         </button>
     </form>
-
 
 {#  Display all electives  #}
 

@@ -7,7 +7,11 @@ import elective_search.models as models
 # View where one can search for electives
 def search(request):
     all_electives = models.Elective.objects.all()
-    return render(request, 'elective_search/search.html', {'all_electives': all_electives})
+    return render(request, 'elective_search/search.html', {'all_electives': all_electives,
+                                                           'languages': models.Elective.LANGUAGE_CHOICES,
+                                                           'utblocks' : models.Elective.UT_BLOCK_CHOICES,
+                                                           'elective_types': models.Elective.ELECTIVE_TYPE_CHOICES,
+                                                           })
 
 
 # View of search results
