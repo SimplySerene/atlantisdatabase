@@ -1,21 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if all_electives %}
-    <table style="width:50%">
-        <tr>
-            <th> Title </th>
-            <th> ECs </th>
-        </tr>
-        {% for elective in all_electives %}
-        <tr>
-            <td> {{ elective.title }} </td>
-            <td> {{ elective.numberOfECs }} </td>
-        </tr>
-        {% endfor %}
-    </table>
-    {%  else %}
-        <p> No electives are available. </p>
-    {% endif %}
+
+{#  Search function  #}
+
+<div>
+    <form id="searchForm" action="{% url 'electives:results' %}" method="get" accept-charset="utf-8">
+        <table>
+            <tr><td>Title:</td>             <td><input name="title" type="search" ></td></tr>
+            <tr><td>Osiris code:</td>       <td><input name="osiriscode" type="search"></td></tr>
+            <tr><td>Number of EC's:</td>    <td><input name="ec" type="search"></td></tr>
+            <tr><td>Keywords:</td>          <td><input name="keywords" type="search" ></td></tr>
+
+            <tr><td>UT Block:</td>
+                <td> <select style="width: 100%" name="utblock">
+                <option value="">-- UT Block --</option>
+                     {% for block in utblocks %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
+
+            <tr><td>Language:</td>
+                <td> <select style="width: 100%" name="language">
+                    <option value="">-- language --</option>
+                     {% for block in languages %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
+
+            <tr><td>Elective type:</td>
+                <td> <select style="width: 100%" name="electivetype">
+                    <option value="">-- Type --</option>
+                    {% for block in elective_types %}
+                         <option value="{{ block.0 }}">{{ block.1 }}</option>
+                     {% endfor %}
+                </select> </td>
+            </tr>
+        </table>
+        <button style=" background-color: #1f81c3;
+                         color: white;
+                         padding: 14px 20px;
+                         margin: 8px 0;
+                         border: none;
+                         border-radius: 4px;
+                         cursor: pointer;"
+                class="searchButton" type="submit">
+            <i>Search</i>
+        </button>
+    </form>
+</div>
+
+{#  Display all electives  #}
+
+{% include 'elective_search/list_electives.html' with electives=all_electives %}
+
 {% endblock %}
-</html>

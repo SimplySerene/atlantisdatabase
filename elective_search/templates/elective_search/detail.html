@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<h1>{{ elective.title }}</h1>
+
+    <table>
+        <tr><td>Osiris code: </td>          <td>{{ elective.osirisCode }}</td></tr>
+        <tr><td>Credits (EC): </td>         <td>{{ elective.numberOfECs }}</td></tr>
+        <tr><td>Elective Type: </td>        <td>{{ elective.get_electiveType_display }}</td></tr>
+        <tr><td>Contact Person: </td>       <td>{{ elective.contactPersonName }}</td></tr>
+        <tr><td>E-mail: </td>               <td>{{ elective.contactPersonEmail }}</td></tr>
+        <tr><td>UT Starting Block: </td>    <td>{{ elective.get_utBlock_display }}</td></tr>
+        <tr><td>Language: </td>             <td>{{ elective.get_language_display }}</td></tr>
+        <tr><td>Course Description: </td>   <td>{{ elective.courseDescription }}</td></tr>
+        <tr><td>Entry Requirements: </td>   <td>{{ elective.entryRequirements }}</td></tr>
+    </table>
+
+    {#  Comments  #}
+
+    {% if elective.review_set.all %} {% endif %}
+
+    {% for review in elective.review_set.all %}
+        <p>{{ review.overallScore }}</p>
+    {% endfor %}
+
+{% endblock content %}

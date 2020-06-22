@@ -5,6 +5,31 @@ from django.db import models
 from django.db import models
 
 
+def search(title='', ec='', utblock='', language='', electivetype='', osiriscode='', keywords=''):
+    """
+    Returns a queryset containing electives that meet the search requirements. `keywords` searches for
+    the given keywords in the elective description.
+    """
+    electives = Elective.objects.all()
+    if title != '':
+        electives = electives.filter(title__icontains=title)
+    if ec != '':
+        electives = electives.filter(numberOfECs__exact=ec)
+    if utblock != '':
+        electives = electives.filter(utBlock__exact=utblock)
+    if language != '':
+        electives = electives.filter(language__exact=language)
+    if electivetype != '':
+        electives = electives.filter(electiveType__exact=electivetype)
+    if osiriscode != '':
+        electives = electives.filter(osirisCode__iexact=osiriscode)
+    if keywords != '':
+        for word in keywords.split():
+            electives = electives.filter(courseDescription__icontains=word)
+
+    return electives
+
+
 class Elective(models.Model):
     # Entry fields:
     # Title of the elective
@@ -16,7 +41,7 @@ class Elective(models.Model):
     # Elective type
     ELECTIVE_TYPE_CHOICES = [
         ('UT', 'Course at the UT'),
-        ('MOD', 'Full module at the UT'),
+        ('MODULE', 'Full module at the UT'),
         ('ONLINE', 'Online Course'),
         ('OTHER', 'Other')
     ]
@@ -80,7 +105,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.reviewerName
-
-
-class Test(models.Model):
-    pass
