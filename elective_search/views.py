@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-
 import elective_search.models as models
+from .review import user_review_form
 
 
 # View where one can search for electives
@@ -36,3 +36,12 @@ class SearchResultsView(ListView):
 class ElectiveDetailView(DetailView):
     model = models.Elective
     template_name = 'elective_search/detail.html'
+
+def user_review_view(request):
+    form = user_review_form(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, "elective_search/user_review.html", context)

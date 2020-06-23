@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'elective_search',
     'home',
     'information_pages',
-    'comments_section',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

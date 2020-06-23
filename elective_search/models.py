@@ -3,6 +3,7 @@ from django.db import models
 # Models for the elective database
 
 from django.db import models
+from django.forms import ModelForm
 
 
 def search(title='', ec='', utblock='', language='', electivetype='', osiriscode='', keywords=''):
@@ -91,17 +92,16 @@ class Review(models.Model):
     reviewerATLASSemester = models.CharField(choices=SEMESTER_CHOICES, max_length=1)
     # Overall score given for the course and explanation for the score.
     overallScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    overallScoreExplanation = models.CharField(max_length=250)
+    overallScoreExplanation = models.TextField(max_length=250)
     # What pre-knowledge was needed.
-    prerequisiteKnowledge = models.CharField(max_length=250)
+    prerequisiteKnowledge = models.TextField(max_length=250)
     # How challenging the course was
     challengingScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    challengingScoreExplanation = models.CharField(max_length=250)
+    challengingScoreExplanation = models.TextField(max_length=250)
     # How the work load was for the course
     workloadScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    workloadScoreExplanation = models.CharField(max_length=250)
+    workloadScoreExplanation = models.TextField(max_length=250)
     # Additional Comments
-    additionalComments = models.CharField(max_length=250)
-
+    additionalComments = models.TextField(max_length=250)
     def __str__(self):
         return self.reviewerName
