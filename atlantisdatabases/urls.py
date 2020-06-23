@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from pages.views import homepage_view, database_view, information_view
 from django.urls import path, include
+from django.conf.urls import url
+from comments_section.views import add_comment_view 
 
 urlpatterns = [
     path('electives/', include(('elective_search.urls', 'elective_search'), namespace='electives')),
     path('admin/', admin.site.urls),
     path('', homepage_view, name='home'),
-    path('database', database_view),
-    path('information', information_view)
-
+    path('database/', database_view),
+    path('information/', information_view),
+    #path('comment/', include('comments_section.urls', 'comments_section')), #could you help me with the urls?
 ]
