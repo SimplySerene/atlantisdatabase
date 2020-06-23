@@ -13,3 +13,6 @@ def database_view(request, *args, **kwargs):
 
 def information_view(request, *args, **kwargs):
     return render(request, "information.html", {})
+
+def comment_view(request, *args, **kwargs):
+    return render(request, "comment.html", {})
