@@ -9,7 +9,7 @@ def search(request):
     all_electives = models.Elective.objects.all()
     return render(request, 'elective_search/search.html', {'all_electives': all_electives,
                                                            'languages': models.Elective.LANGUAGE_CHOICES,
-                                                           'utblocks' : models.Elective.UT_BLOCK_CHOICES,
+                                                           'utblocks': models.Elective.UT_BLOCK_CHOICES,
                                                            'elective_types': models.Elective.ELECTIVE_TYPE_CHOICES,
                                                            })
 
@@ -26,7 +26,7 @@ class SearchResultsView(ListView):
         language = self.request.GET.get('language')
         electivetype = self.request.GET.get('electivetype')
         osiriscode = self.request.GET.get('osiriscode')
-        keywords = self.request.GET.get('keywords')  # todo break up into separate keywords
+        keywords = self.request.GET.get('keywords')
         result = models.search(title=title, ec=ec, utblock=utblock, language=language, electivetype=electivetype,
                                osiriscode=osiriscode, keywords=keywords)
         return result

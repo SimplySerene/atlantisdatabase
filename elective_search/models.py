@@ -87,7 +87,7 @@ class Review(models.Model):
     # Email address of reviewer
     reviewerEmail = models.EmailField()
     # What ATLAS semester was the reviewer in when taking this course
-    SEMESTER_CHOICES = [(str(a), "Semester" + str(a)) for a in range(1, 7)]
+    SEMESTER_CHOICES = [(str(a), "Semester " + str(a)) for a in range(1, 7)]
     reviewerATLASSemester = models.CharField(choices=SEMESTER_CHOICES, max_length=1)
     # Overall score given for the course and explanation for the score.
     overallScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)

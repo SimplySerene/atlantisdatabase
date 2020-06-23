@@ -5,7 +5,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <h1>{{ elective.title }}</h1>
-
+<div style="width: 50%">
     <table>
         <tr><td>Osiris code: </td>          <td>{{ elective.osirisCode }}</td></tr>
         <tr><td>Credits (EC): </td>         <td>{{ elective.numberOfECs }}</td></tr>
@@ -17,13 +17,35 @@
         <tr><td>Course Description: </td>   <td>{{ elective.courseDescription }}</td></tr>
         <tr><td>Entry Requirements: </td>   <td>{{ elective.entryRequirements }}</td></tr>
     </table>
-
+</div>
     {#  Comments  #}
-
-    {% if elective.review_set.all %} {% endif %}
-
+<div style="overflow-y:auto; height: 350px; padding: 10px; width: 50%;">
+    {% if elective.review_set.all %}
     {% for review in elective.review_set.all %}
-        <p>{{ review.overallScore }}</p>
+
+        <div style="padding: 10px; background: #e8e8e8;">
+            <h3>{{ review.reviewerName }}</h3>
+            {{ review.reviewerEmail }} <br>
+            <table>
+
+    <tr><td> Overall Score: {{ review.overallScore }}</td>                          <td>{{ review.overallScoreExplanation }}</td></tr>
+    <tr><td>  How challenging was the course? {{ review.challengingScore }} </td>   <td>{{ review.challengingScoreExplanation }}</td></tr>
+    <tr><td> How was the workload? {{ review.workloadScore }} </td>                 <td>{{ review.workloadScoreExplanation }}</td></tr>
+    <tr><td> Extra comments: </td>                                                  <td>{{ review.additionalComments }}</td></tr>
+    <tr><td> What prerequisite knowledge was needed? </td>                          <td>{{ review.prerequisiteKnowledge }}</td></tr>
+
+            </table>
+
+
+
+        </div>
+        <br>
     {% endfor %}
 
+    {% else %}
+
+        <p>This course has no reviews.</p>
+
+    {% endif %}
+</div>
 {% endblock content %}
