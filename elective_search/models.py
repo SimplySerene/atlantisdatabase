@@ -109,8 +109,7 @@ class Review(models.Model):
     
 def get_published():
     elective = Elective()
-    review = Review()
-    if (elective.review_set.all and review.published):
+    if (elective.review_set.all):
         return True
     else:
         return False 
