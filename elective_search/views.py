@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 import elective_search.models as models
 from .review import user_review_form
-
+from django.shortcuts import redirect
 
 # View where one can search for electives
 def search(request):
@@ -41,7 +41,12 @@ def user_review_view(request):
     form = user_review_form(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('/thanks!/')
     context = {
-        'form': form
+        'form': form 
     }
     return render(request, "elective_search/user_review.html", context)
+
+def thank_you_view(request, *args, **kwargs):
+    return render(request, "thank_you.html", {})
+ 

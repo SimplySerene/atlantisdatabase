@@ -78,30 +78,31 @@ class Elective(models.Model):
 class Review(models.Model):
     # Specify relationship with the elective this review is for. If the elective is deleted,
     # so are all reviews.
+    published = models.BooleanField(default=False)
     elective = models.ForeignKey(Elective, on_delete=models.CASCADE)
     # Choices from 1 to 10.
     SCORE_CHOICES_1_TO_10 = [(a, a) for a in range(1, 11)]
 
     # Entry fields:
     # Name of the reviewer
-    reviewerName = models.CharField(max_length=35)
+    reviewerName = models.CharField(max_length=35, default= '')
     # Email address of reviewer
-    reviewerEmail = models.EmailField()
+    reviewerEmail = models.EmailField(default='')
     # What ATLAS semester was the reviewer in when taking this course
     SEMESTER_CHOICES = [(str(a), "Semester " + str(a)) for a in range(1, 7)]
     reviewerATLASSemester = models.CharField(choices=SEMESTER_CHOICES, max_length=1)
     # Overall score given for the course and explanation for the score.
     overallScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    overallScoreExplanation = models.TextField(max_length=250)
+    overallScoreExplanation = models.TextField(max_length=500, default='')
     # What pre-knowledge was needed.
-    prerequisiteKnowledge = models.TextField(max_length=250)
+    prerequisiteKnowledge = models.TextField(max_length=500, default = '')
     # How challenging the course was
     challengingScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    challengingScoreExplanation = models.TextField(max_length=250)
+    challengingScoreExplanation = models.TextField(max_length=500,default='')
     # How the work load was for the course
     workloadScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
-    workloadScoreExplanation = models.TextField(max_length=250)
+    workloadScoreExplanation = models.TextField(max_length=500, default ='')
     # Additional Comments
-    additionalComments = models.TextField(max_length=250)
+    additionalComments = models.TextField(max_length=500, default = '')
     def __str__(self):
         return self.reviewerName

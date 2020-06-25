@@ -20,9 +20,11 @@
 </div>
     {#  Comments  #}
 <div style="overflow-y:auto; height: 350px; padding: 10px; width: 50%;">
-    <a style="text-decoration: none;" href="/user_review/">Submit your review</a> 
+    <a style="text-decoration: none;" href="/user_review/">Submit your review</a>
+    <br></br> 
     {% if elective.review_set.all %}
     {% for review in elective.review_set.all %}
+    {% if review.published == True %}
 
         <div style="padding: 10px; background: #e8e8e8;">
             <h3>{{ review.reviewerName }}</h3>
@@ -40,9 +42,10 @@
 
 
         </div>
-        <br>
+        <br> 
+    {% endif %}
     {% endfor %}
-
+   
     {% else %}
 
         <p>This course has no reviews.</p>

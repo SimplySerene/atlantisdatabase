@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from pages.views import homepage_view, database_view, information_view
 from django.urls import path, include
-from elective_search.views import user_review_view
+from elective_search.views import user_review_view, thank_you_view
 
 
 urlpatterns = [
@@ -26,4 +26,5 @@ urlpatterns = [
     path('database/', database_view),
     path('information/', information_view),
     path('user_review/', user_review_view),
+    path('thanks!/', thank_you_view)
 ]
