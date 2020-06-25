@@ -48,5 +48,5 @@ def user_review_view(request):
     return render(request, "elective_search/user_review.html", context)
 
 def thank_you_view(request, *args, **kwargs):
-    return render(request, "thank_you.html", {})
+    return render(request, "elective_search/thank_you.html", {})
  

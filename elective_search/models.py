@@ -106,3 +106,11 @@ class Review(models.Model):
     additionalComments = models.TextField(max_length=500, default = '')
     def __str__(self):
         return self.reviewerName
+    
+def get_published():
+    elective = Elective()
+    review = Review()
+    if (elective.review_set.all and review.published):
+        return True
+    else:
+        return False 
