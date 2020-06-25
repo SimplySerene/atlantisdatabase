@@ -4,6 +4,7 @@ import elective_search.models as models
 from .review import user_review_form
 from django.shortcuts import redirect
 
+
 # View where one can search for electives
 def search(request):
     all_electives = models.Elective.objects.all()
@@ -37,6 +38,7 @@ class ElectiveDetailView(DetailView):
     model = models.Elective
     template_name = 'elective_search/detail.html'
 
+
 def user_review_view(request):
     form = user_review_form(request.POST or None)
     if form.is_valid():
@@ -46,6 +48,7 @@ def user_review_view(request):
         'form': form 
     }
     return render(request, "elective_search/user_review.html", context)
+
 
 def thank_you_view(request, *args, **kwargs):
     return render(request, "elective_search/thank_you.html", {})

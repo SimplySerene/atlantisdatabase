@@ -1,9 +1,6 @@
-from django.db import models
-
 # Models for the elective database
 
 from django.db import models
-from django.forms import ModelForm
 
 
 def search(title='', ec='', utblock='', language='', electivetype='', osiriscode='', keywords=''):
@@ -70,6 +67,10 @@ class Elective(models.Model):
     # E-mail of the contact person
     contactPersonEmail = models.EmailField()
 
+    def get_published_reviews(self):
+        """Return queryset of all reviews which are published."""
+        return self.review_set.filter(published=True)
+
     def __str__(self):
         return self.title
 
@@ -78,10 +79,12 @@ class Elective(models.Model):
 class Review(models.Model):
     # Specify relationship with the elective this review is for. If the elective is deleted,
     # so are all reviews.
-    published = models.BooleanField(default=False)
     elective = models.ForeignKey(Elective, on_delete=models.CASCADE)
     # Choices from 1 to 10.
     SCORE_CHOICES_1_TO_10 = [(a, a) for a in range(1, 11)]
+
+    # Is this review published or not.
+    published = models.BooleanField(default=False)
 
     # Entry fields:
     # Name of the reviewer
@@ -104,12 +107,9 @@ class Review(models.Model):
     workloadScoreExplanation = models.TextField(max_length=500, default ='')
     # Additional Comments
     additionalComments = models.TextField(max_length=500, default = '')
+
     def __str__(self):
         return self.reviewerName
-    
-def get_published():
-    elective = Elective()
-    if (elective.review_set.all):
-        return True
-    else:
-        return False 
+
+
+

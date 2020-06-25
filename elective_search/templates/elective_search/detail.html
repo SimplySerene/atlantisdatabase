@@ -44,9 +44,8 @@
     
 
     <br></br> 
-    {% if elective.review_set.all %}
-    {% for review in elective.review_set.all %}
-    {% if review.published == True %}
+    {% if elective.get_published_reviews %}
+    {% for review in elective.get_published_reviews %}
 
         <div style="padding: 10px; background: #e8e8e8;">
             <h3>{{ review.reviewerName }}</h3>
@@ -60,12 +59,9 @@
     <tr><td> What prerequisite knowledge was needed? </td>                          <td>{{ review.prerequisiteKnowledge }}</td></tr>
 
             </table>
-
-
-
         </div>
-        <br> 
-    {% endif %}
+        <br>
+
     {% endfor %}
    
     {% else %}
