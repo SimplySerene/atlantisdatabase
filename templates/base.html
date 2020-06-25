@@ -5,28 +5,48 @@
 </head>
 <style>
     .standardfont{
-        font-family: Arial, Helvetica, sans-serif;
-        margin-left: 10%;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         border: black;
+        padding-top: 120px;
+        padding-left: 300px;
+        padding-bottom:150px;
+        max-width: 800px;
+        min-width: 200px;
+        min-height: 200px;
+        margin-top: 10px; 
+        text-align: left;
+        font-size: 15px;
+        
+    }
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Open sans",sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+    .header{
+        padding: 0 15px 0 0;
+        width: auto;
+        display: flex;
+        align-items: center;
+        overflow:hidden;
+        position: fixed;
     }
 
-    .logo_position{
-        position: absolute;
-        left: 0;
-        top: 0;
-
-    }
 </style>
 <center>
     
 <body>
+   <div class="header"> 
+       <A href = "/"><img src="https://congressus-sa-atlantis.s3-eu-west-1.amazonaws.com/template/359/logo-sa-atlantis.png" width= "500">  </A>
+   </div>
    
-    <A class = "logo_position" href = "/"><img src="https://congressus-sa-atlantis.s3-eu-west-1.amazonaws.com/template/359/logo-sa-atlantis.png" width= "500">  </A>
          <b>{% include 'navbar.html' %}</b>
+    
    <div class="standardfont">
 
         {% block content %} {% endblock %}
-        {#include 'contact.html' #}
+        {% include 'contact.html' %}
     </div>
   
 
