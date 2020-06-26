@@ -1,0 +1,29 @@
+.standardfont {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border: black;
+    padding-top: 120px;
+    padding-left: 300px;
+    padding-bottom:150px;
+    max-width: 800px;
+    min-width: 200px;
+    min-height: 200px;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 15px;
+    }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Open sans",sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.header {
+    padding: 0 15px 0 0;
+    width: auto;
+    display: flex;
+    align-items: center;
+    overflow:hidden;
+    position: fixed;
+    }

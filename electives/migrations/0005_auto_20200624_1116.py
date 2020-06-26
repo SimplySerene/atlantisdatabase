@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('elective_search', '0004_auto_20200623_1835'),
+        ('electives', '0004_auto_20200623_1835'),
     ]
 
     operations = [

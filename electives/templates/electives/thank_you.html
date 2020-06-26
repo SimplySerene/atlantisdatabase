@@ -1,0 +1,9 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Thank you for your review!</h1>
+<p>To leave another review, click <a href = "{% url 'electives:thanks' %}"> here</a></p>
+<P>To return to the database, click <a href = "{% url 'electives:search' %}"> here</a></P>
+
+{% endblock %}

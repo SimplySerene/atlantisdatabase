@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('elective_search', '0006_review_published'),
+        ('electives', '0006_review_published'),
     ]
 
     operations = [

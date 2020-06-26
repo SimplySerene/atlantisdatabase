@@ -11,7 +11,8 @@
         <tr>
             <td> {{ elective.title }} </td>
             <td> {{ elective.numberOfECs }} </td>
-            <td style="text-align: center"> <a href="{% url 'electives:detail' elective.id %}"> <img width="25" src="{% static "hyper_link_blue.png" %}" alt="Link"</a></td>
+            <td style="text-align: center"> <a href="{% url 'electives:detail' elective.id %}">
+                <img width="25" src="{% static "electives/hyper_link_blue.png" %}" alt="Link"></a></td>
         </tr>
         {% endfor %}
     </table>

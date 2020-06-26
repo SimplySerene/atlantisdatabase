@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('workloadScore', models.IntegerField(choices=[(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10)])),
                 ('workloadScoreExplanation', models.CharField(max_length=250)),
                 ('additionalComments', models.CharField(max_length=250)),
-                ('elective', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='elective_search.Elective')),
+                ('elective', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='electives.Elective')),
             ],
         ),
     ]
