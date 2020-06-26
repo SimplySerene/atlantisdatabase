@@ -24,7 +24,6 @@ def search(title='', ec='', utblock='', language='', electivetype='', osiriscode
     if keywords != '':
         for word in keywords.split():
             electives = electives.filter(courseDescription__icontains=word)
-
     return electives
 
 
@@ -88,7 +87,7 @@ class Review(models.Model):
 
     # Entry fields:
     # Name of the reviewer
-    reviewerName = models.CharField(max_length=35, default= '')
+    reviewerName = models.CharField(max_length=35, default='')
     # Email address of reviewer
     reviewerEmail = models.EmailField(default='')
     # What ATLAS semester was the reviewer in when taking this course
@@ -98,15 +97,14 @@ class Review(models.Model):
     overallScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
     overallScoreExplanation = models.TextField(max_length=500, default='')
     # What pre-knowledge was needed.
-    prerequisiteKnowledge = models.TextField(max_length=500, default = '')
+    prerequisiteKnowledge = models.TextField(max_length=500, default='')
     # How challenging the course was
     challengingScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
     challengingScoreExplanation = models.TextField(max_length=500,default='')
     # How the work load was for the course
     workloadScore = models.IntegerField(choices=SCORE_CHOICES_1_TO_10)
     workloadScoreExplanation = models.TextField(max_length=500, default ='')
-    # Additional Comments
-    additionalComments = models.TextField(max_length=500, default = '')
+    additionalComments = models.TextField(max_length=500, default='')
 
     def __str__(self):
         return self.reviewerName

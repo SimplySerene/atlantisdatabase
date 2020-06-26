@@ -20,8 +20,8 @@
     <div class="navbarstyle">
 
     <ul>
-        <li><a style="text-decoration: none;" href = "/information"> Information </a></li><br>
-        <li><a style="text-decoration: none;" href = "/electives"> Electives</a></li><br>
+        <li><a style="text-decoration: none;" href = "{% url 'home:information' %}"> Information </a></li><br>
+        <li><a style="text-decoration: none;" href = "{% url 'electives:search' %}"> Electives</a></li><br>
 
     </ul>
     </div>
