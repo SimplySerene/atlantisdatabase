@@ -24,8 +24,6 @@ SECRET_KEY = 'q+#69xv6#8q5ircji^ft^@ad+%d$q8q%nrsoo(etf%qysr^_@^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -76,12 +74,14 @@ WSGI_APPLICATION = 'atlantisdatabases.wsgi.application'
 
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'atlantisdb',
-        'USER': 'atlantisdb',
-        'PASSWORD': 'temp',
+        'USER': 'atlantisdb_user',
+        'PASSWORD': 'fishandchapsdrienerburght',
     }
 }
 

@@ -1,0 +1,7 @@
+# Lines started with a '#' are ignored.
+
+# Ignore all __pychache__ directories
+__pycache__
+
+# Ignore all migrations
+migrations/
