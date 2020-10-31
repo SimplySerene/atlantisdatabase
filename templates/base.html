@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 {% load static %}
 
 <head>
-    <title>S.A. Atlantis Elective Database</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S.A. Atlantis - Elective DB</title>
+
+    <link rel="shortcut icon" type="image/jgp" href="{% static 'favicon.ico'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
-    {% block css %} {% endblock %}
+
+    {% block css %} {% endblock %} {# css file for 'main content' #}
+
 </head>
-<center>
     
 <body>
-   <div class="header"> 
-       <A href = "/"><img src="https://congressus-sa-atlantis.s3-eu-west-1.amazonaws.com/template/359/logo-sa-atlantis.png" width= "400">  </A>
-   </div>
-   
-         <b>{% include 'navbar.html' %}</b>
+<div class="all">
+    {# Navigation bar #}
+    <div class="navbar">
+        <div class="nav-item"><a href="{% url 'home:home'%}"> Home </a></div>
+        <div class="nav-item"><a href="{% url 'home:information' %}"> Information </a></div>
+        <div class="nav-item"><a href="{% url 'electives:search' %}"> Electives</a></div>
+    </div>
     
-   <div class="standardfont">
-        {% block content %} {% endblock %}
-        {% include 'contact.html' %}
-   </div>
-  
+    {# Main content #}
+    <div class="main">
+    {% block content %} {% endblock %}
+    </div>
 
-    
-
+    {# Footer #}
+    <div class="footer">
+        <h3>Contact us:</h3> 
+        <p>m.i.bos@student.utwente.nl</p>
+        <p>t.m.bethe@student.utwente.nl</p>
+    </div>
+</div>
 </body>
-
-</center>
+ 
 </html>
+

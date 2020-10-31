@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block css %} 
+<link rel="stylesheet" type="text/css" href="{% static 'electives/detail.css' %}">
+{% endblock %}
+
 {% block content %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <h1>{{ elective.title }}</h1>
-<div style="width: 50%">
+
+<div>
     <table>
         <tr><td>Osiris code: </td>          <td>{{ elective.osirisCode }}</td></tr>
         <tr><td>Credits (EC): </td>         <td>{{ elective.numberOfECs }}</td></tr>
@@ -18,56 +25,50 @@
         <tr><td>Entry Requirements: </td>   <td>{{ elective.entryRequirements }}</td></tr>
     </table>
 </div>
-<style>
-    .text{
-        text-decoration: none;
-    }
-    .text:hover{
-        color: white;
-    }
 
-</style>
-
-    {#  Comments  #}   
-    <button style=" background-color: #1f81c3;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    "
-    ><a class="text" href="{% url 'electives:user_review' %}">Submit your review</a>
+{#  Comments  #}   
+<button>
+    <a class="text" href="{% url 'electives:user_review' %}">Submit your review</a>
 </button>
-<h2>Reviews from your peers:</h2>
-<div style="overflow-y:auto; height: 350px; padding: 10px;">
-    
 
-    <br></br> 
+<h2>Reviews from your peers:</h2>
+<div class="reviews">
     {% if elective.get_published_reviews %}
     {% for review in elective.get_published_reviews %}
 
-        <div style="padding: 10px; background: #e8e8e8;">
+    <div class="review-item">
             <h3>{{ review.reviewerName }}</h3>
             {{ review.reviewerEmail }} <br>
-            <table>
+    <hr>
 
-    <tr><td> Overall Score: {{ review.overallScore }}</td>                          <td>{{ review.overallScoreExplanation }}</td></tr>
-    <tr><td> How challenging was the course? {{ review.challengingScore }} </td>    <td>{{ review.challengingScoreExplanation }}</td></tr>
-    <tr><td> How was the workload? {{ review.workloadScore }} </td>                 <td>{{ review.workloadScoreExplanation }}</td></tr>
-    <tr><td> Extra comments: </td>                                                  <td>{{ review.additionalComments }}</td></tr>
-    <tr><td> What prerequisite knowledge was needed? </td>                          <td>{{ review.prerequisiteKnowledge }}</td></tr>
+    <h3>Overall score? (1-10): {{ review.overallScore }}</h3>
+    <p><em>Explanation: </em>{{ review.overallScoreExplanation }}</p>
 
-            </table>
-        </div>
-        <br>
+    <h3>How challenging was the course? (1-10): {{ review.challengingScore }}</h3> 
+    <p><em>Explanation: </em>{{ review.challengingScoreExplanation }}</p>
+
+    <h3>How was the workload? (1-10): {{ review.workloadScore }}</h3>
+    <p><em>Explanation: </em>{{ review.workloadScoreExplanation }}</p>
+
+    <h3>Prerequisite knowledge needed?</h3>
+    <p>{{ review.prerequisiteKnowledge }} </p>
+
+    <h3>Extra comments:</h3>
+    <p> {{ review.additionalComments }} </p>
+            {% comment %} <table>
+
+    <tr class="tr-odd"><td> Overall Score: {{ review.overallScore }}</td>                          <td>{{ review.overallScoreExplanation }}</td></tr>
+    <tr class="tr-even"><td> How challenging was the course? {{ review.challengingScore }} </td>    <td>{{ review.challengingScoreExplanation }}</td></tr>
+    <tr class="tr-odd"><td> How was the workload? {{ review.workloadScore }} </td>                 <td>{{ review.workloadScoreExplanation }}</td></tr>
+    <tr class="tr-even"><td> Extra comments: </td>                                                  <td>{{ review.additionalComments }}</td></tr>
+    <tr class="tr-odd"><td> What prerequisite knowledge was needed? </td>                          <td>{{ review.prerequisiteKnowledge }}</td></tr>
+            </table> {% endcomment %}
+    </div>
 
     {% endfor %}
    
     {% else %}
-
         <p>This course has no reviews.</p>
-
     {% endif %}
 </div>
 {% endblock content %}
